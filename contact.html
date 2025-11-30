@@ -1,0 +1,71 @@
+<!-- contact.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — CarryCharm</title>
+  <link rel="stylesheet" href="dist/styles.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <div data-include="partials/header.html"></div>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-text">
+          <h1>Contact Us</h1>
+          <p>Have a question about an order or a product? Send us a message and we'll get back to you within 1-2 business days.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="product-grid" style="gap: 24px;">
+        <div class="card">
+          <div class="card-body">
+            <form id="contact-form" action="#" method="POST" style="display: grid; gap: 16px;">
+              <div>
+                <label class="small">Name</label>
+                <input class="input" name="name" required>
+              </div>
+              <div>
+                <label class="small">Email</label>
+                <input class="input" type="email" name="email" required>
+              </div>
+              <div>
+                <label class="small">Message</label>
+                <textarea class="input" name="message" rows="5" required style="resize: vertical;"></textarea>
+              </div>
+              <div style="display: flex; justify-content: flex-end;">
+                <button class="btn btn-primary btn-full-width" type="submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3 style="margin-top:0">Store & Social</h3>
+            <div class="small" style="margin-top: 8px;">
+              <strong>Email:</strong> support@carrycharm.co<br>
+              <strong>Phone:</strong> +92 300 0000000<br>
+              <strong>Address:</strong> 12 Baker Street, Karachi (example)
+            </div>
+            <div class="socials" style="margin-top: 16px;">
+              <a href="#" class="small">Instagram</a>
+              <a href="#" class="small">Facebook</a>
+              <a href="#" class="small">Pinterest</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <div data-include="partials/footer.html"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
