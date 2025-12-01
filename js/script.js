@@ -64,10 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      daysEl.textContent = days.toString().padStart(2, '0');
-      hoursEl.textContent = hours.toString().padStart(2, '0');
-      minutesEl.textContent = minutes.toString().padStart(2, '0');
-      secondsEl.textContent = seconds.toString().padStart(2, '0');
+      // Function to animate number changes
+      function animateValueChange(element, newValue) {
+        if (element.textContent !== newValue) {
+          element.classList.add('animate-change');
+          element.textContent = newValue;
+          element.addEventListener('animationend', () => {
+            element.classList.remove('animate-change');
+          }, { once: true });
+        }
+      }
+
+      animateValueChange(daysEl, days.toString().padStart(2, '0'));
+      animateValueChange(hoursEl, hours.toString().padStart(2, '0'));
+      animateValueChange(minutesEl, minutes.toString().padStart(2, '0'));
+      animateValueChange(secondsEl, seconds.toString().padStart(2, '0'));
     }
 
     const countdownInterval = setInterval(updateCountdown, 1000);
