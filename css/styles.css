@@ -786,7 +786,7 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
 .categories-section-new {
   background-color: var(--color-background);
   padding: calc(var(--spacing-unit) * 5) 0;
-  text-align: center; /* Center section title and subtitle */
+  text-align: center;
 }
 
 .categories-section-new .section-title {
@@ -801,92 +801,89 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
   color: var(--color-text-muted);
   font-size: clamp(1rem, 2vw, 1.25rem);
   max-width: 700px;
-  margin: 0 auto calc(var(--spacing-unit) * 3.5); /* Increased bottom margin */
+  margin: 0 auto calc(var(--spacing-unit) * 3.5);
 }
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjusted minmax for better fit */
-  gap: 2rem; /* Consistent gap */
-  max-width: 1200px; /* Constrain grid width */
-  margin: 0 auto; /* Center the grid */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Slightly smaller min-width for more flexibility */
+  gap: 1.8rem; /* Refined spacing */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 calc(var(--spacing-unit) * 0.5); /* Inner padding for grid */
 }
 
 .category-card {
   position: relative;
   overflow: hidden;
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--border-radius-lg); /* Soft rounded corners */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08); /* Softer shadow for premium feel */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   text-decoration: none;
   background-color: var(--color-surface);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center image within card */
-  height: 250px; /* Fixed height for the card */
+  justify-content: center;
+  height: 280px; /* Consistent height for cards */
+  cursor: pointer;
 }
 
 .category-card:hover {
-  transform: translateY(-8px) scale(1.03); /* More dynamic hover */
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary); /* Accent border on hover */
+  transform: translateY(-5px) scale(1.02); /* Subtle lift and slight scale */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
 .category-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.4s ease-in-out, filter 0.3s ease-in-out;
+  border-radius: var(--border-radius-lg); /* Ensure image itself has rounded corners */
 }
 
 .category-card:hover .category-card-image {
-  transform: scale(1.15); /* Zoom in effect */
-}
-
-.category-card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    border-radius: var(--border-radius-lg);
-}
-
-.category-card:hover .category-card-overlay {
-    opacity: 1;
+  transform: scale(1.1); /* Gentle zoom */
+  filter: brightness(0.7); /* Slightly dim the image to make text pop */
 }
 
 .category-card-title-overlay {
-    color: var(--color-surface); /* White text */
-    font-size: 1.8rem; /* Larger font size */
-    font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    transform: translateY(10px);
-    transition: transform 0.3s ease-in-out;
+  position: absolute;
+  bottom: 0; /* Start from bottom */
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 1rem; /* More generous padding */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%); /* Gradient overlay */
+  color: var(--color-surface); /* White text */
+  font-size: 1.6rem; /* Clean, bold font */
+  font-weight: 700;
+  letter-spacing: 0.02em; /* Slightly wider letter spacing */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transform: translateY(100%); /* Hidden initially, slides up */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg); /* Rounded bottom */
+  text-align: center;
+  line-height: 1.2;
+  text-transform: capitalize; /* Capitalize for aesthetics */
 }
 
 .category-card:hover .category-card-title-overlay {
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0); /* Slides up into view */
 }
 
-/* Responsive adjustments for categories */
+/* Responsive adjustments for improved category cards */
 @media (max-width: 1024px) {
   .categories-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
   }
   .category-card {
-    height: 220px;
+    height: 240px;
   }
   .category-card-title-overlay {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    padding: 1.2rem 1rem;
   }
 }
 
@@ -895,13 +892,14 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
     padding: calc(var(--spacing-unit) * 4) 0;
   }
   .categories-grid {
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
   .category-card {
     height: 200px;
   }
   .category-card-title-overlay {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    padding: 1rem 0.8rem;
   }
 }
 
@@ -917,7 +915,8 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
     height: 180px;
   }
   .category-card-title-overlay {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    padding: 0.8rem 0.6rem;
   }
 }
 
