@@ -1,27 +1,169 @@
-<section class="section">
+<section class="section categories-section-new">
+  <style>
+    /* Internal CSS for Shop by Category section */
+
+    /* Root variables for consistency (can be overridden by external CSS if desired) */
+    :root {
+      --category-primary: #F97316; /* Vibrant Orange */
+      --category-text-dark: #1F2937;
+      --category-text-muted: #6B7280;
+      --category-surface: #FFFFFF;
+      --category-background: #F9FAFB; /* Light Gray for background */
+      --category-border-radius-lg: 1rem; /* 16px */
+      --category-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      --category-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      --category-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .categories-section-new {
+      background-color: var(--category-background);
+      padding: 5rem 0; /* Adjusted padding */
+      font-family: var(--category-font-family);
+    }
+
+    .categories-section-new .section-title {
+      color: var(--category-text-dark);
+      font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+      margin-bottom: 1rem;
+    }
+
+    .categories-section-new .section-subtitle {
+      color: var(--category-text-muted);
+      font-size: clamp(1rem, 2vw, 1.25rem); /* Responsive font size */
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+      gap: 2.5rem; /* Increased gap */
+      margin-top: 3rem;
+    }
+
+    .category-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--category-border-radius-lg);
+      box-shadow: var(--category-shadow-md);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      background-color: var(--category-surface); /* White background for cards */
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* Ensure cards take full height in grid */
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px) scale(1.02); /* More pronounced hover effect */
+      box-shadow: var(--category-shadow-lg);
+    }
+
+    .category-card-image {
+      width: 100%;
+      height: 250px; /* Fixed height for images */
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+      border-radius: var(--category-border-radius-lg) var(--category-border-radius-lg) 0 0; /* Rounded top corners */
+    }
+
+    .category-card:hover .category-card-image {
+      transform: scale(1.1);
+    }
+
+    .category-card-content {
+      padding: 1.5rem;
+      flex-grow: 1; /* Allows content area to expand */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: var(--category-surface);
+      border-radius: 0 0 var(--category-border-radius-lg) var(--category-border-radius-lg); /* Rounded bottom corners */
+    }
+
+    .category-card-title {
+      font-size: 1.4rem; /* Larger title */
+      font-weight: 700;
+      color: var(--category-text-dark);
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+
+    .category-card:hover .category-card-title {
+      color: var(--category-primary); /* Vibrant accent on hover */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+      }
+      .category-card-image {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .categories-section-new {
+        padding: 4rem 0;
+      }
+      .categories-grid {
+        gap: 1.5rem;
+      }
+      .category-card-title {
+        font-size: 1.2rem;
+      }
+      .category-card-image {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .categories-section-new {
+        padding: 3rem 0;
+      }
+      .categories-grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: 1rem;
+      }
+      .category-card-image {
+        height: 220px;
+      }
+    }
+  </style>
   <div class="container">
     <h2 class="section-title">Shop by Category</h2>
     <p class="section-subtitle">Find exactly what you're looking for by browsing our curated categories.</p>
-    <div class="category-grid">
+    <div class="categories-grid">
 
       <a href="shop.html#handbags" class="category-card">
         <img src="https://images.unsplash.com/photo-1542223616-9b2e0d2c6a2f?q=80&w=600&auto=format&fit=crop" alt="Handbags" class="category-card-image">
-        <h3 class="category-card-title">Handbags</h3>
+        <div class="category-card-content">
+            <h3 class="category-card-title">Handbags</h3>
+        </div>
       </a>
 
       <a href="shop.html#backpacks" class="category-card">
         <img src="https://images.unsplash.com/photo-1532538705686-2f9d4b1d9d5c?q=80&w=600&auto=format&fit=crop" alt="Backpacks" class="category-card-image">
-        <h3 class="category-card-title">Backpacks</h3>
+        <div class="category-card-content">
+            <h3 class="category-card-title">Backpacks</h3>
+        </div>
       </a>
 
       <a href="shop.html#travel" class="category-card">
         <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=600&auto=format&fit=crop" alt="Travel" class="category-card-image">
-        <h3 class="category-card-title">Travel</h3>
+        <div class="category-card-content">
+            <h3 class="category-card-title">Travel</h3>
+        </div>
       </a>
 
       <a href="shop.html#wallets" class="category-card">
         <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600&auto=format&fit=crop" alt="Wallets" class="category-card-image">
-        <h3 class="category-card-title">Wallets</h3>
+        <div class="category-card-content">
+            <h3 class="category-card-title">Wallets</h3>
+        </div>
       </a>
 
     </div>
