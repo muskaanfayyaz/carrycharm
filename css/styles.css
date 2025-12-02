@@ -894,63 +894,34 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
   }
 }
 
-/* 10. WHY CHOOSE US SECTION */
-.why-choose-us {
-  background-color: var(--color-background);
-  padding: calc(var(--spacing-unit) * 5) 0;
-}
-
-.wcu-grid {
+/* Testimonials */
+.testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(1, 1fr);
   gap: 2rem;
-  margin-top: 4rem;
 }
 
-.wcu-card {
+.testimonial-card {
   background-color: var(--color-surface);
+  padding: 2rem;
   border-radius: var(--border-radius-lg);
-  padding: 2.5rem;
-  text-align: center;
+  box-shadow: var(--shadow-sm);
   border: 1px solid var(--color-border);
-  transition: all 0.3s ease-in-out;
-  box-shadow: var(--shadow-md);
 }
 
-.wcu-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--color-primary);
-}
-
-.wcu-card-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  background-color: var(--color-primary-light);
-  color: var(--color-surface);
-  margin-bottom: 1.5rem;
-  transition: all 0.3s ease-in-out;
-}
-
-.wcu-card:hover .wcu-card-icon {
-    background-color: var(--color-primary);
-    transform: scale(1.1) rotate(10deg);
-}
-
-.wcu-card-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 1rem;
-}
-
-.wcu-card-text {
+.testimonial-text {
+  font-size: 1.1rem;
+  font-style: italic;
   color: var(--color-text-muted);
-  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.5rem;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-text);
 }
 
 /* 11. Shop by Category Section */
