@@ -1,134 +1,116 @@
-<!-- shop.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shop — CarryCharm</title>
-  <link rel="stylesheet" href="dist/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | CarryCharm</title>
+    <link rel="stylesheet" href="dist/styles.css">
+    <style>
+        /* Styles for Shop Page Layout */
+        .shop-header {
+            text-align: center;
+            padding: 4rem 1rem;
+            background-color: var(--color-surface);
+            margin-bottom: 3rem;
+            border-radius: var(--border-radius-lg);
+        }
+        .filter-bar {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background-color: var(--color-surface);
+            border-radius: var(--border-radius-md);
+        }
+        .filter-bar select, .filter-bar input {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-md);
+            background-color: var(--color-surface);
+            font-size: 1rem;
+            width: 100%;
+        }
+        .product-grid-redesigned { padding-bottom: 5rem; }
+        .product-card-redesigned a.card-link { text-decoration: none; color: inherit; }
+
+        @media (min-width: 768px) {
+            .filter-bar {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); display: flex;
+            align-items: center; justify-content: center; z-index: 2000;
+            opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s 0.3s;
+        }
+        .modal-overlay.visible { opacity: 1; visibility: visible; transition-delay: 0s; }
+        .modal-content {
+            background-color: #fff; padding: 2rem; border-radius: 16px;
+            max-width: 400px; width: 90%; text-align: center;
+            transform: scale(0.9); transition: transform 0.3s ease;
+        }
+        .modal-overlay.visible .modal-content { transform: scale(1); }
+        .modal-content h2 { color: var(--color-primary); margin-bottom: 1rem; }
+        .modal-product-info {
+            display: flex; align-items: center; gap: 1rem;
+            margin: 1.5rem 0; text-align: left;
+        }
+        .modal-product-info img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
+        .modal-buttons { display: flex; gap: 1rem; justify-content: center; }
+    </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <div data-include="partials/header.html"></div>
 
-  <main>
-    <div class="shop-header">
-        <div class="container">
-            <h1 class="section-title">Explore Our Collection</h1>
-            <p class="section-subtitle">Find the perfect bag for every occasion, from everyday essentials to travel companions.</p>
+    <div data-include="partials/header.html"></div>
+
+    <main class="container">
+        <div class="shop-header">
+            <h1>Our Collection</h1>
+            <p>Explore our curated selection of high-quality bags and accessories, designed for the modern individual.</p>
+        </div>
+
+        <div class="filter-bar">
+            <input type="search" id="search-input" placeholder="Search for products...">
+            <select id="category-filter" aria-label="Filter by category">
+                <option value="all" selected>All Categories</option>
+                <option value="backpack">Backpacks</option>
+                <option value="tote">Totes</option>
+                <option value="handbag">Handbags</option>
+                <option value="duffel">Duffels</option>
+                <option value="clutch">Clutches</option>
+                <option value="wallet">Wallets</option>
+            </select>
+        </div>
+
+        <div class="product-grid-redesigned">
+            <!-- Product Cards are dynamically inserted by js/script.js -->
+        </div>
+    </main>
+
+    <div class="modal-overlay" id="add-to-cart-modal">
+        <div class="modal-content">
+            <h2>Added to Cart!</h2>
+            <div class="modal-product-info">
+                <img src="" alt="Product" id="modal-product-image">
+                <div>
+                    <h4 id="modal-product-name"></h4>
+                    <p id="modal-product-price"></p>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" id="continue-shopping-btn">Continue Shopping</button>
+                <a href="cart.html" class="btn btn-primary">View Cart</a>
+            </div>
         </div>
     </div>
 
-    <section class="container section">
-      <div class="product-grid" aria-live="polite">
-        <!-- Product A -->
-        <div class="product-card">
-          <div class="card-image-container">
-            <a href="product.html">
-              <img src="https://images.unsplash.com/photo-1542293787932-2f0f24b2f1a7?q=80&w=1200&auto=format&fit=crop" alt="Mini Satchel" class="card-image">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3 class="product-title"><a href="product.html">Mini Satchel</a></h3>
-            <p class="product-desc">A compact and chic satchel with a detachable crossbody strap.</p>
-          </div>
-          <div class="card-footer">
-            <span class="price">$25.00</span>
-            <button class="btn btn-primary">Add to Cart</button>
-          </div>
-        </div>
+    <div data-include="partials/footer.html"></div>
 
-        <!-- Product B -->
-        <div class="product-card">
-          <div class="card-image-container">
-            <a href="product.html">
-              <img src="https://images.unsplash.com/photo-1519741491662-53b4e3e3b8a4?q=80&w=1200&auto=format&fit=crop" alt="Leather Backpack" class="card-image">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3 class="product-title"><a href="product.html">Signature Backpack</a></h3>
-            <p class="product-desc">A sleek and durable backpack crafted from high-quality faux leather.</p>
-          </div>
-          <div class="card-footer">
-            <span class="price">$45.00</span>
-            <button class="btn btn-primary">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- Product C -->
-        <div class="product-card">
-          <div class="card-image-container">
-            <a href="product.html">
-              <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffe7?q=80&w=1200&auto=format&fit=crop" alt="Crossbody" class="card-image">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3 class="product-title"><a href="product.html">Everyday Crossbody</a></h3>
-            <p class="product-desc">This minimal crossbody bag is perfect for daily use, with a quick-access pocket.</p>
-          </div>
-          <div class="card-footer">
-            <span class="price">$15.00</span>
-            <button class="btn btn-primary">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- Product D -->
-        <div class="product-card">
-          <div class="card-image-container">
-            <a href="product.html">
-              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop" alt="Duffel" class="card-image">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3 class="product-title"><a href="product.html">Classic Duffel</a></h3>
-            <p class="product-desc">A spacious and durable duffel bag made from heavy-duty canvas.</p>
-          </div>
-          <div class="card-footer">
-            <span class="price">$55.00</span>
-            <button class="btn btn-primary">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- Product E -->
-        <div class="product-card">
-          <div class="card-image-container">
-            <a href="product.html">
-              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop" alt="Wallet" class="card-image">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3 class="product-title"><a href="product.html">Slim Wallet</a></h3>
-            <p class="product-desc">A slim and stylish bifold wallet with RFID-blocking technology.</p>
-          </div>
-          <div class="card-footer">
-            <span class="price">$10.00</span>
-            <button class="btn btn-primary">Add to Cart</button>
-          </div>
-        </div>
-
-        <!-- Product F -->
-        <div class="product-card">
-          <div class="card-image-container">
-            <a href="product.html">
-              <img src="https://images.unsplash.com/photo-1544916310-7e0eee6d551b?q=80&w=1200&auto=format&fit=crop" alt="Tote" class="card-image">
-            </a>
-          </div>
-          <div class="card-body">
-            <h3 class="product-title"><a href="product.html">Canvas Tote</a></h3>
-            <p class="product-desc">An eco-friendly canvas tote bag with reinforced handles.</p>
-          </div>
-          <div class="card-footer">
-            <span class="price">$12.00</span>
-            <button class="btn btn-primary">Add to Cart</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <div data-include="partials/footer.html"></div>
-
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
+    
 </body>
 </html>
