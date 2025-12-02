@@ -466,39 +466,6 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
 
 
 
-/* Category Card */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: calc(var(--spacing-unit) * 2);
-}
-
-.category-card {
-  text-align: center;
-  transition: var(--transition-base);
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-}
-
-.category-card .category-card-image {
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-  margin-bottom: 1rem;
-  transition: var(--transition-base);
-}
-
-.category-card:hover .category-card-image {
-  box-shadow: var(--shadow-lg);
-}
-
-.category-card .category-card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
 /* CTA Block */
 .cta-block {
   background-color: var(--color-primary);
@@ -555,23 +522,36 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
   color: var(--color-text);
 }
 
-/* Feature Grid */
-.feature-grid {
+/* 10. WHY CHOOSE US SECTION */
+.why-choose-us {
+  background-color: var(--color-background);
+  padding: calc(var(--spacing-unit) * 5) 0;
+}
+
+.wcu-grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  text-align: center;
+  margin-top: 4rem;
 }
 
-.feature-card {
+.wcu-card {
   background-color: var(--color-surface);
-  padding: 2rem;
   border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-sm);
+  padding: 2.5rem;
+  text-align: center;
   border: 1px solid var(--color-border);
+  transition: all 0.3s ease-in-out;
+  box-shadow: var(--shadow-md);
 }
 
-.feature-card-icon {
+.wcu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.wcu-card-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -581,15 +561,111 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
   background-color: var(--color-primary-light);
   color: var(--color-surface);
   margin-bottom: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
-.feature-card-title {
-  font-size: 1.25rem;
+.wcu-card:hover .wcu-card-icon {
+    background-color: var(--color-primary);
+    transform: scale(1.1) rotate(10deg);
+}
+
+.wcu-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.wcu-card-text {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Testimonials */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background-color: var(--color-surface);
+  padding: 2rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.5rem;
+}
+
+.testimonial-author {
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  text-align: right;
+  color: var(--color-text);
 }
 
-.feature-card-text {
+/* 10. WHY CHOOSE US SECTION */
+.why-choose-us {
+  background-color: var(--color-background);
+  padding: calc(var(--spacing-unit) * 5) 0;
+}
+
+.wcu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.wcu-card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  padding: 2.5rem;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease-in-out;
+  box-shadow: var(--shadow-md);
+}
+
+.wcu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.wcu-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-surface);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.wcu-card:hover .wcu-card-icon {
+    background-color: var(--color-primary);
+    transform: scale(1.1) rotate(10deg);
+}
+
+.wcu-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+}
+
+.wcu-card-text {
   color: var(--color-text-muted);
   line-height: 1.6;
 }
@@ -966,3 +1042,7 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
   }
 }
 
+/* Promo Section Specific Styles */
+.section-promo {
+  background-color: var(--color-surface); /* Make the section background white to contrast with the body's light gray background */
+}
