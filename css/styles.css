@@ -466,39 +466,6 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
 
 
 
-/* Category Card */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: calc(var(--spacing-unit) * 2);
-}
-
-.category-card {
-  text-align: center;
-  transition: var(--transition-base);
-}
-
-.category-card:hover {
-  transform: translateY(-5px);
-}
-
-.category-card .category-card-image {
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
-  margin-bottom: 1rem;
-  transition: var(--transition-base);
-}
-
-.category-card:hover .category-card-image {
-  box-shadow: var(--shadow-lg);
-}
-
-.category-card .category-card-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
 /* CTA Block */
 .cta-block {
   background-color: var(--color-primary);
@@ -525,217 +492,93 @@ body.nav-is-open .mobile-nav-toggle .hamburger-icon span {
   color: var(--color-primary);
 }
 
-/* Countdown Block */
-/* For number change animation */
-@keyframes number-change-animation {
-  0% { transform: scale(1.2) translateY(-5px); opacity: 0.7; }
-  50% { transform: scale(0.9) translateY(2px); opacity: 1; }
-  100% { transform: scale(1) translateY(0); opacity: 1; }
+/* Testimonials */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
 }
 
-.countdown-value.animate-change {
-  animation: number-change-animation 0.3s ease-out;
-}
-
-/* Entry animation for the countdown block */
-@keyframes block-entry-animation {
-  0% { opacity: 0; transform: translateY(50px) scale(0.9); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.countdown-block {
-  background: linear-gradient(135deg, #1A1A1A 0%, #000000 100%); /* Deep black gradient */
-  color: var(--color-surface);
-  padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 3); /* Increased padding */
+.testimonial-card {
+  background-color: var(--color-surface);
+  padding: 2rem;
   border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.5rem;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-text);
+}
+
+/* 10. WHY CHOOSE US SECTION */
+.why-choose-us {
+  background-color: var(--color-background);
+  padding: calc(var(--spacing-unit) * 5) 0;
+}
+
+.wcu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.wcu-card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  padding: 2.5rem;
   text-align: center;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(249, 115, 22, 0.2); /* Enhanced outer shadow, subtle inner shadow */
-  overflow: hidden;
-  position: relative;
-  border: 3px solid var(--color-primary); /* More prominent orange border */
-  animation: block-entry-animation 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; /* Entry animation */
-  transform-style: preserve-3d; /* Ensure 3D context for children */
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease-in-out;
+  box-shadow: var(--shadow-md);
 }
 
-.countdown-block::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(249,115,22,0.2) 0%, rgba(249,115,22,0) 70%); /* Stronger radial glow */
-  animation: pulse-glow 15s infinite ease-in-out;
-  z-index: 0;
-}
-
-@keyframes pulse-glow {
-  0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.6; } /* More prominent glow */
-  50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
-}
-
-.countdown-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem; /* Added gap for better spacing */
-}
-
-.countdown-title {
-  font-size: clamp(2.2rem, 5.5vw, 4.8rem); /* Even larger title */
-  font-weight: 900;
-  margin-bottom: 1rem; /* Adjusted margin */
-  color: var(--color-surface);
-  text-shadow: 0 0 25px rgba(249, 115, 22, 0.9), 0 0 40px rgba(255, 255, 255, 0.4); /* Stronger glow */
-  letter-spacing: -0.07em; /* Tighter letter spacing for impact */
-  line-height: 1;
-  background: linear-gradient(45deg, var(--color-surface), #FFD700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transform: translateZ(30px); /* Lift title in 3D space */
-}
-
-.countdown-timer {
-  display: flex;
-  justify-content: center;
-  gap: calc(var(--spacing-unit) * 1.8); /* Slightly increased gap */
-  margin-bottom: 2.8rem; /* Adjusted margin */
-  flex-wrap: wrap;
-  perspective: 1000px;
-  transform: translateZ(20px); /* Lift timer in 3D space */
-}
-
-.countdown-item {
-  background-color: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px); /* Increased blur */
-  border-radius: var(--border-radius-md);
-  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2.2); /* Increased padding */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 100px; /* Further increased min-width */
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1); /* Enhanced shadows */
-  position: relative;
-  overflow: hidden;
-  transform-style: preserve-3d;
-}
-
-.countdown-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, rgba(249,115,22,0.4) 0%, rgba(0,0,0,0) 100%); /* Even stronger orange overlay */
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: translateY(100%);
-}
-
-.countdown-item:hover::before {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.countdown-item:hover {
-  transform: translateY(-10px) scale(1.06) rotateX(7deg); /* More pronounced hover */
+.wcu-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
   border-color: var(--color-primary);
-  box-shadow: 0 18px 35px rgba(249, 115, 22, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.15); /* Enhanced hover shadows */
 }
 
-.countdown-value {
-  font-size: clamp(3.5rem, 8vw, 5.5rem); /* Even larger values */
-  font-weight: 900;
-  color: var(--color-primary);
-  line-height: 1;
-  text-shadow: 0 0 18px rgba(249, 115, 22, 0.8), 0 0 25px rgba(255, 255, 255, 0.3);
-  transition: all 0.4s ease-out;
-  transform: translateZ(25px); /* Lift values even more */
-}
-
-.countdown-item:hover .countdown-value {
-  color: var(--color-surface);
-  text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
-}
-
-.countdown-label {
-  font-size: 1.1rem; /* Larger label */
-  text-transform: uppercase;
-  letter-spacing: 0.12em; /* More prominent letter spacing */
-  color: rgba(255, 255, 255, 0.9); /* Brighter label */
-  margin-top: 1rem; /* More space */
-  font-weight: 700;
-  transform: translateZ(15px); /* Lift labels more */
-}
-
-.countdown-text {
-  font-size: clamp(1.2rem, 3.5vw, 1.6rem); /* Larger text */
-  margin-bottom: 3.5rem; /* More space */
-  color: rgba(255, 255, 255, 0.98);
-  max-width: 750px; /* Wider text area */
-  margin-left: auto;
-  margin-right: auto;
-  font-weight: 500;
-  line-height: 1.6;
-  transform: translateZ(10px); /* Lift text slightly */
-}
-
-.countdown-block .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3.5); /* Even larger button */
-  border-radius: 999px;
-  font-size: 1.3rem; /* Even larger font */
-  font-weight: 800;
-  box-shadow: 0 10px 35px rgba(249, 115, 22, 0.7); /* Stronger button shadow */
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  transform: translateZ(20px); /* Lift button in 3D space */
-}
-
-.countdown-block .btn-primary:hover {
+.wcu-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
   background-color: var(--color-primary-light);
-  transform: translateY(-7px) scale(1.05); /* More pronounced hover */
-  box-shadow: 0 15px 50px rgba(249, 115, 22, 0.9);
-  animation: pulse-button 0.8s infinite alternate;
+  color: var(--color-surface);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease-in-out;
 }
 
-@keyframes pulse-button {
-  0% { transform: translateY(-7px) scale(1.05); box-shadow: 0 15px 50px rgba(249, 115, 22, 0.9); }
-  100% { transform: translateY(-9px) scale(1.06); box-shadow: 0 20px 60px rgba(249, 115, 22, 1); }
+.wcu-card:hover .wcu-card-icon {
+    background-color: var(--color-primary);
+    transform: scale(1.1) rotate(10deg);
 }
 
-@media (min-width: 768px) {
-  .countdown-block {
-    padding: calc(var(--spacing-unit) * 7) calc(var(--spacing-unit) * 5); /* Increased padding for larger screens */
-  }
-  .countdown-timer {
-    gap: calc(var(--spacing-unit) * 3);
-  }
-  .countdown-item {
-    min-width: 160px; /* Even larger items on desktop */
-    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2.5);
-  }
+.wcu-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 480px) {
-  .countdown-item {
-    min-width: 120px;
-    padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 1.5);
-  }
-  .countdown-value {
-    font-size: clamp(3rem, 12vw, 4rem);
-  }
-  .countdown-label {
-    font-size: 0.9rem;
-    letter-spacing: 0.1em;
-  }
+.wcu-card-text {
+  color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
 /* Testimonials */
