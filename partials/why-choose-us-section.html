@@ -1,0 +1,157 @@
+<style>
+    /*
+     * WHY CHOOSE US - UI/UX Redesign
+     * A modern, premium component consistent with the testimonials section.
+    */
+
+    /* Component-specific variables from the established theme */
+    :root {
+        --wcu-new-color-primary: #F97316;
+        --wcu-new-color-text: #1F2937;
+        --wcu-new-color-text-muted: #6B7280;
+        --wcu-new-color-surface: #FFFFFF;
+        --wcu-new-color-background: #FFFFFF; /* Using white for a cleaner look */
+        --wcu-new-color-border: #E5E7EB;
+        --wcu-new-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    /* Base Component Styles */
+    .why-choose-us-redesigned {
+        font-family: var(--wcu-new-font-sans);
+        background-color: var(--wcu-new-color-background);
+        padding: 6rem 1rem;
+        text-align: center;
+    }
+
+    .wcu-new-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    /* Section Header */
+    .wcu-new-title {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        font-weight: 800;
+        color: var(--wcu-new-color-text);
+        margin-bottom: 1rem;
+    }
+
+    .wcu-new-subtitle {
+        font-size: clamp(1rem, 3vw, 1.15rem);
+        color: var(--wcu-new-color-text-muted);
+        max-width: 650px;
+        margin: 0 auto 4rem;
+    }
+
+    /* Features Grid */
+    .wcu-new-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center; /* Center content within cards */
+    }
+
+    /* Feature Card */
+    .wcu-new-card {
+        background-color: #F9FAFB; /* Use light gray for cards to contrast section */
+        border-radius: 16px;
+        padding: 3rem 2.5rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--wcu-new-color-border);
+        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .wcu-new-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Icon Block */
+    .wcu-new-icon-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: var(--wcu-new-color-primary);
+        color: var(--wcu-new-color-surface);
+        margin-bottom: 1.5rem;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+    }
+
+    .wcu-new-card:hover .wcu-new-icon-wrapper {
+        transform: scale(1.1) rotate(10deg);
+    }
+    
+    .wcu-new-icon-wrapper svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Card Typography */
+    .wcu-new-card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--wcu-new-color-text);
+        margin-bottom: 0.75rem;
+    }
+
+    .wcu-new-card-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--wcu-new-color-text-muted);
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+        .wcu-new-grid {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+    }
+</style>
+
+<section class="why-choose-us-redesigned">
+    <div class="wcu-new-container">
+        <h2 class="wcu-new-title">Why Choose CarryCharm?</h2>
+        <p class="wcu-new-subtitle">We deliver a promise of quality, style, and trust with every product we offer.</p>
+        
+        <div class="wcu-new-grid">
+            <!-- Card 1: Unique Designs -->
+            <div class="wcu-new-card">
+                <div class="wcu-new-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                </div>
+                <h3 class="wcu-new-card-title">Unique Designs</h3>
+                <p class="wcu-new-card-description">Our collection features exclusive designs you won't find anywhere else, blending modern trends with timeless elegance.</p>
+            </div>
+
+            <!-- Card 2: Durable Materials -->
+            <div class="wcu-new-card">
+                <div class="wcu-new-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                </div>
+                <h3 class="wcu-new-card-title">Durable Materials</h3>
+                <p class="wcu-new-card-description">We source high-quality, resilient materials to ensure your favorite accessory withstands the test of time.</p>
+            </div>
+
+            <!-- Card 3: Artisan Craftsmanship -->
+            <div class="wcu-new-card">
+                <div class="wcu-new-icon-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="wcu-new-card-title">Artisan Craftsmanship</h3>
+                <p class="wcu-new-card-description">Each piece is meticulously crafted by skilled artisans, focusing on quality, precision, and flawless detail.</p>
+            </div>
+        </div>
+    </div>
+</section>

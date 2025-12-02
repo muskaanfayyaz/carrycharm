@@ -119,6 +119,51 @@ img, video, svg {
 
 /* 4. COMPONENTS */
 
+/* 4. COMPONENTS */
+
+/* Why Choose Us Section - Feature Cards */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: calc(var(--spacing-unit) * 2); /* 32px */
+  margin-top: calc(var(--spacing-unit) * 3);
+}
+
+.feature-card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: calc(var(--spacing-unit) * 2);
+  text-align: center;
+  transition: var(--transition-base);
+  border: 1px solid var(--color-border);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.feature-card .icon {
+  margin: 0 auto calc(var(--spacing-unit) * 1.5);
+  height: 50px;
+  width: 50px;
+  color: var(--color-primary);
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-unit);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;

@@ -1,24 +1,204 @@
-<section class="section testimonials">
-  <div class="container">
-    <h2 class="section-title">What Our Customers Say</h2>
-    <p class="section-subtitle">We're proud to have a community of happy customers. Here's what they have to say.</p>
-    <div class="testimonial-grid">
+<style>
+    /*
+     * TESTIMONIALS SECTION - UI/UX Redesign
+     * A modern, premium, and visually appealing component.
+    */
 
-      <div class="testimonial-card">
-        <blockquote class="testimonial-text">"I love my new bag! It's the perfect size for everyday use, and it's so stylish. I get compliments on it all the time."</blockquote>
-        <div class="testimonial-author">- Sarah L.</div>
-      </div>
+    /* Component-specific variables */
+    :root {
+        --ts-color-primary: #F97316;      /* Vibrant Orange from theme */
+        --ts-color-text: #1F2937;         /* Dark Onyx from theme */
+        --ts-color-text-muted: #6B7280;   /* Gray from theme */
+        --ts-color-surface: #FFFFFF;     /* White */
+        --ts-color-background: #F9FAFB;   /* Light Gray from theme */
+        --ts-color-border: #E5E7EB;       /* Subtle border from theme */
+        --ts-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
 
-      <div class="testimonial-card">
-        <blockquote class="testimonial-text">"I'm so impressed with the quality of this bag. It's so well-made, and I know it will last for years to come."</blockquote>
-        <div class="testimonial-author">- Emily R.</div>
-      </div>
+    /* Base Component Styles */
+    .testimonials-redesigned {
+        font-family: var(--ts-font-sans);
+        background-color: var(--ts-color-background);
+        padding: 6rem 1rem;
+        text-align: center;
+    }
 
-      <div class="testimonial-card">
-        <blockquote class="testimonial-text">"I've been looking for a stylish and affordable bag for months, and I finally found it! I'm so happy with my purchase."</blockquote>
-        <div class="testimonial-author">- Jessica M.</div>
-      </div>
+    .ts-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
 
+    /* Section Header */
+    .ts-title {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+        font-weight: 800;
+        color: var(--ts-color-text);
+        margin-bottom: 1rem;
+    }
+
+    .ts-subtitle {
+        font-size: clamp(1rem, 3vw, 1.15rem);
+        color: var(--ts-color-text-muted);
+        max-width: 650px;
+        margin: 0 auto 4rem;
+    }
+
+    /* Testimonials Grid */
+    .ts-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: left;
+    }
+
+    /* Testimonial Card */
+    .ts-card {
+        background-color: var(--ts-color-surface);
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid var(--ts-color-border);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .ts-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Decorative Quote Icon */
+    .ts-card::before {
+        content: '“';
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        font-size: 10rem;
+        font-weight: 900;
+        color: var(--ts-color-primary);
+        opacity: 0.08;
+        line-height: 1;
+        z-index: 1;
+        transform: rotate(-10deg);
+    }
+
+    /* Card Content Wrapper */
+    .ts-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Quote Text */
+    .ts-quote {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        color: var(--ts-color-text);
+        font-style: italic;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--ts-color-border);
+    }
+
+    /* Author Block */
+    .ts-author-block {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .ts-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--ts-color-primary);
+        color: var(--ts-color-surface);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+    }
+
+    .ts-author-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ts-author-name {
+        font-weight: 700;
+        color: var(--ts-color-text);
+    }
+
+    .ts-author-designation {
+        font-size: 0.9rem;
+        color: var(--ts-color-text-muted);
+    }
+
+    /* Responsive Design */
+    @media (min-width: 768px) {
+        .ts-grid {
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        }
+    }
+</style>
+
+<section class="testimonials-redesigned">
+    <div class="ts-container">
+        <h2 class="ts-title">What Our Customers Say</h2>
+        <p class="ts-subtitle">We're proud to have a community of happy customers. Here's what they have to say about their CarryCharm experience.</p>
+        
+        <div class="ts-grid">
+            <!-- Testimonial 1 -->
+            <div class="ts-card">
+                <div class="ts-content">
+                    <blockquote class="ts-quote">
+                        "I absolutely love my new tote! It's the perfect size for my laptop and daily essentials. The quality is outstanding, and I get compliments on it all the time. It's both stylish and functional."
+                    </blockquote>
+                    <div class="ts-author-block">
+                        <div class="ts-avatar">SL</div>
+                        <div class="ts-author-info">
+                            <span class="ts-author-name">Sarah L.</span>
+                            <span class="ts-author-designation">Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="ts-card">
+                <div class="ts-content">
+                    <blockquote class="ts-quote">
+                        "I'm so impressed with the craftsmanship of this backpack. It's incredibly well-made, and the attention to detail is evident. I know this bag will last me for years to come. Worth every penny!"
+                    </blockquote>
+                    <div class="ts-author-block">
+                        <div class="ts-avatar">ER</div>
+                         <div class="ts-author-info">
+                            <span class="ts-author-name">Emily R.</span>
+                            <span class="ts-author-designation">Frequent Traveler</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="ts-card">
+                <div class="ts-content">
+                    <blockquote class="ts-quote">
+                        "I've been searching for a chic and affordable bag for months, and I finally found it at CarryCharm! The customer service was also fantastic. I'm so happy with my purchase."
+                    </blockquote>
+                    <div class="ts-author-block">
+                        <div class="ts-avatar">JM</div>
+                         <div class="ts-author-info">
+                            <span class="ts-author-name">Jessica M.</span>
+                            <span class="ts-author-designation">Style Blogger</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
