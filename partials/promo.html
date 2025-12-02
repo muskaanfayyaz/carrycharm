@@ -6,12 +6,12 @@
     :root {
         --promo-primary: #F97316; /* Vibrant Orange */
         --promo-primary-light: #FB923C;
-        --promo-text-dark: #1F2937;
+        --promo-text-dark: #1F2937; /* Dark text for light background */
         --promo-text-light: #FFFFFF;
-        --promo-background-card: linear-gradient(135deg, #1A1A1A 0%, #000000 100%); /* Deep black gradient */
+        --promo-background-card: #FFFFFF; /* White background for the card */
         --promo-border-radius-lg: 1rem; /* 16px */
-        --promo-shadow-lg: 0 25px 50px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(249, 115, 22, 0.2);
-        --promo-shadow-md: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.1);
+        --promo-shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+        --promo-shadow-md: 0 5px 15px rgba(0, 0, 0, 0.08), inset 0 0 5px rgba(0, 0, 0, 0.03); /* Lighter shadow */
         --promo-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
@@ -30,14 +30,14 @@
       position: relative;
       overflow: hidden;
       border: 3px solid var(--promo-primary); /* More prominent orange border */
-      color: var(--promo-text-light); /* Default text color for the card */
+      color: var(--promo-text-dark); /* Default text color for the card (dark) */
       transform-style: preserve-3d; /* For child 3D effects */
       transition: all 0.4s ease-in-out;
     }
 
     .promo-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(249, 115, 22, 0.3);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), inset 0 0 15px rgba(0, 0, 0, 0.08); /* Adjusted hover shadow */
     }
 
     .promo-card::before {
@@ -47,15 +47,15 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(249,115,22,0.25) 0%, rgba(249,115,22,0) 70%); /* Stronger radial glow */
+      background: radial-gradient(circle, rgba(249,115,22,0.1) 0%, rgba(249,115,22,0) 70%); /* Subtle glow */
       animation: promo-glow 15s infinite linear;
       z-index: 0;
     }
 
     @keyframes promo-glow {
-      0% { transform: rotate(0deg) scale(0.8); opacity: 0.7; }
-      50% { transform: rotate(180deg) scale(1.1); opacity: 0.9; }
-      100% { transform: rotate(360deg) scale(0.8); opacity: 0.7; }
+      0% { transform: rotate(0deg) scale(0.8); opacity: 0.5; }
+      50% { transform: rotate(180deg) scale(1.1); opacity: 0.7; }
+      100% { transform: rotate(360deg) scale(0.8); opacity: 0.5; }
     }
 
     .promo-card-content {
@@ -69,14 +69,14 @@
     .promo-title {
       font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
       font-weight: 900;
-      color: var(--promo-text-light);
+      color: var(--promo-text-dark); /* Dark title for light background */
       margin-bottom: 1.5rem; /* Increased margin */
       letter-spacing: -0.05em; /* Tighter spacing */
-      text-shadow: 0 0 20px rgba(249, 115, 22, 0.8), 0 0 30px rgba(255, 255, 255, 0.3);
+      text-shadow: none; /* Remove dark text shadow */
       line-height: 1.1;
-      background: linear-gradient(45deg, var(--promo-text-light), #FFD700); /* Gold accent */
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      /* background: linear-gradient(45deg, var(--promo-text-dark), #6B7280); /* Muted gold accent */
+      /* -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; */
       transform: translateZ(30px); /* Lift in 3D space */
     }
 
@@ -91,15 +91,15 @@
     }
 
     .promo-timer-item {
-      background-color: rgba(255, 255, 255, 0.1); /* Slightly more opaque background */
-      backdrop-filter: blur(8px); /* Subtle blur effect */
+      background-color: rgba(249, 115, 22, 0.05); /* Very light orange background */
+      backdrop-filter: blur(4px); /* Subtle blur effect */
       border-radius: 0.75rem; /* Slightly larger rounded corners */
       padding: 1.25rem 1.5rem; /* More padding */
       min-width: 90px; /* Ensure minimum width */
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.2); /* Lighter border */
+      border: 1px solid rgba(249, 115, 22, 0.2); /* Light orange border */
       box-shadow: var(--promo-shadow-md);
       transition: all 0.3s ease;
       transform-style: preserve-3d;
@@ -108,29 +108,29 @@
     .promo-timer-item:hover {
       transform: translateY(-5px) scale(1.05) rotateX(5deg);
       border-color: var(--promo-primary);
-      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px rgba(249, 115, 22, 0.2), inset 0 0 10px rgba(249, 115, 22, 0.1); /* Adjusted hover shadow */
     }
 
     .promo-timer-value {
       font-size: clamp(2.5rem, 7vw, 4rem); /* Responsive font size */
       font-weight: 800;
-      color: var(--promo-primary-light); /* Accent color for numbers */
+      color: var(--promo-primary); /* Vibrant primary color */
       line-height: 1;
-      text-shadow: 0 0 15px rgba(249, 115, 22, 0.7), 0 0 20px rgba(255, 255, 255, 0.2);
+      text-shadow: none; /* Remove dark text shadow */
       transition: all 0.3s ease;
       transform: translateZ(25px); /* Lift value in 3D space */
     }
 
     .promo-timer-item:hover .promo-timer-value {
-        color: var(--promo-text-light); /* Change color on hover */
-        text-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+        color: var(--promo-primary-light); /* Darker primary on hover */
+        text-shadow: none;
     }
 
     .promo-timer-label {
       font-size: 0.95rem; /* Slightly larger label */
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--promo-text-dark); /* Dark label text */
       margin-top: 0.5rem;
       font-weight: 600;
       transform: translateZ(15px); /* Lift label in 3D space */
@@ -138,7 +138,7 @@
 
     .promo-text {
       font-size: clamp(1rem, 2.5vw, 1.25rem); /* Responsive font size */
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--promo-text-dark); /* Dark text */
       margin-bottom: 2.5rem; /* Increased margin */
       max-width: 600px;
       margin-left: auto;
@@ -155,7 +155,7 @@
       font-weight: 700;
       font-size: 1.1rem; /* Larger font */
       transition: all 0.3s ease;
-      box-shadow: 0 10px 20px rgba(249, 115, 22, 0.5); /* Stronger shadow */
+      box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3); /* Softer shadow */
       letter-spacing: 0.05em;
       text-transform: uppercase;
       transform: translateZ(20px); /* Lift button in 3D space */
@@ -164,7 +164,7 @@
     .promo-card .btn-primary:hover {
       background-color: var(--promo-primary-light);
       transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 15px 30px rgba(249, 115, 22, 0.7);
+      box-shadow: 0 15px 30px rgba(249, 115, 22, 0.4);
     }
 
     /* Responsive adjustments */
