@@ -1,55 +1,272 @@
-<!-- about.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>About — CarryCharm</title>
-  <link rel="stylesheet" href="dist/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | CarryCharm</title>
+    <link rel="stylesheet" href="dist/styles.css">
+    <style>
+        :root {
+            /* Using variables from the main theme for consistency */
+            --color-primary: #F97316;
+            --color-text: #1F2937;
+            --color-text-muted: #6B7280;
+            --color-surface: #FFFFFF;
+            --color-background: #F9FAFB;
+            --color-border: #E5E7EB;
+        }
+
+        /* Base styles for the About page */
+        .about-page-main {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--color-surface);
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .about-section {
+            padding: 5rem 0;
+        }
+
+        /* Hero Section */
+        .about-hero {
+            text-align: center;
+            padding: 5rem 1rem;
+            background-color: var(--color-background);
+        }
+        .about-hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--color-text);
+        }
+        .about-hero .highlight {
+            color: var(--color-primary);
+        }
+        .about-hero p {
+            font-size: 1.2rem;
+            color: var(--color-text-muted);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* Our Story Section */
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .story-image {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .story-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+        }
+
+        /* Mission & Vision Section */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        .mission-card {
+            background-color: var(--color-background);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+        }
+        .mission-card h3 {
+            font-size: 1.75rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Milestones Section */
+        .milestones-section {
+            background-color: var(--color-text);
+            color: var(--color-surface);
+        }
+        .milestones-section h2 {
+            text-align: center;
+            color: var(--color-surface);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .milestones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .milestone-item {
+            text-align: center;
+        }
+        .milestone-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--color-primary);
+        }
+        .milestone-label {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
+        
+        /* Team Section */
+        .team-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .team-card {
+            text-align: center;
+            background-color: var(--color-background);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.07);
+        }
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            object-fit: cover;
+            border: 4px solid var(--color-surface);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .team-title {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .story-section { grid-template-columns: 1fr 1fr; }
+            .mission-vision-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <div data-include="partials/header.html"></div>
+    <div data-include="partials/header.html"></div>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="hero-text">
-          <h1>Our Story</h1>
-          <p>CarryCharm began with a simple idea: beautiful, intentional bags shouldn't cost a fortune. We blend timeless design, reliable construction, and friendly prices so you can carry the pieces you love every day.</p>
-        </div>
-      </div>
-    </section>
+    <main class="about-page-main">
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-container">
+                <h1>The Story Behind the <span class="highlight">Charm</span></h1>
+                <p>CarryCharm began with a simple idea: beautiful, intentional bags shouldn't cost a fortune. We're a passionate team dedicated to blending timeless design, reliable construction, and accessible prices.</p>
+            </div>
+        </section>
 
-    <section class="container section">
-      <div class="product-grid" style="gap: 24px;">
-        <div class="card">
-          <div class="card-body">
-            <h3 style="margin-top:0">Our Mission</h3>
-            <p class="small">To design elevated everyday bags that balance style, durability and function — thoughtfully made for people who value both form and practicality.</p>
-          </div>
-        </div>
+        <!-- Our Story Section -->
+        <section class="about-section about-container">
+            <div class="story-section">
+                <div class="story-content">
+                    <h2>From a Sketchbook to Your Shoulder</h2>
+                    <p>Founded in 2020, CarryCharm was born from a desire to create accessories that were not just beautiful, but also a seamless part of the everyday journey. Our founder, Jane Doe, noticed a gap in the market for high-quality, versatile bags that could keep up with a modern, dynamic lifestyle without a luxury price tag.</p>
+                    <p>Starting with just a sketchbook and a sewing machine, the first collection was created with a focus on clean lines, durable materials, and thoughtful details. Today, we've grown into a small but mighty team, still driven by that original passion.</p>
+                </div>
+                <img src="/public/workspace.webp" alt="CarryCharm design workspace" class="story-image">
+            </div>
+            <div class="mission-vision-grid">
+                <div class="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>To design elevated everyday bags that balance style, durability, and function — thoughtfully made for people who value both form and practicality.</p>
+                </div>
+                <div class="mission-card">
+                    <h3>Our Vision</h3>
+                    <p>To become a globally recognized brand synonymous with accessible luxury, sustainable practices, and a deep connection with our community.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Milestones Section -->
+        <section class="about-section milestones-section">
+            <div class="about-container">
+                <h2>Our Journey So Far</h2>
+                <div class="milestones-grid">
+                    <div class="milestone-item">
+                        <div class="milestone-number">10,000+</div>
+                        <div class="milestone-label">Happy Customers</div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-number">5</div>
+                        <div class="milestone-label">Years of Style</div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-number">100%</div>
+                        <div class="milestone-label">Hand-Crafted</div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-number">25+</div>
+                        <div class="milestone-label">Unique Designs</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-          <div class="card-body">
-            <h3 style="margin-top:0">Quality & Sustainability</h3>
-            <p class="small">We prioritize materials that look great and last. Wherever possible, we choose sustainable textiles and minimize unnecessary packaging.</p>
-          </div>
-        </div>
+        <!-- Team Section -->
+        <section class="about-section about-container">
+            <div class="team-section">
+                <h2>Meet the Team</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="https://source.unsplash.com/random/400x400/?woman,portrait" alt="Jane Doe" class="team-avatar">
+                        <h3 class="team-name">Jane Doe</h3>
+                        <p class="team-title">Founder & Lead Designer</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://source.unsplash.com/random/400x400/?man,portrait" alt="John Smith" class="team-avatar">
+                        <h3 class="team-name">John Smith</h3>
+                        <p class="team-title">Head of Operations</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://source.unsplash.com/random/400x400/?person,portrait" alt="Emily White" class="team-avatar">
+                        <h3 class="team-name">Emily White</h3>
+                        <p class="team-title">Marketing Director</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="https://source.unsplash.com/random/400x400/?male,portrait" alt="Michael Brown" class="team-avatar">
+                        <h3 class="team-name">Michael Brown</h3>
+                        <p class="team-title">Customer Experience Lead</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-          <div class="card-body">
-            <h3 style="margin-top:0">Community</h3>
-            <p class="small">We believe good design connects people. Follow us on social channels for styling tips and early drops.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+    </main>
 
-  <!-- FOOTER -->
-  <div data-include="partials/footer.html"></div>
+    <div data-include="partials/footer.html"></div>
 
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
