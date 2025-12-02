@@ -1,7 +1,4 @@
 <section class="section categories-section-new">
-  <style>
-    /* Internal CSS for Shop by Category section */
-
     /* Root variables for consistency */
     :root {
       --category-primary: #F97316; /* Vibrant Orange */
@@ -57,23 +54,15 @@
       background-color: var(--category-surface);
       display: flex;
       flex-direction: column;
-      align-items: center; /* Center content horizontally */
-      justify-content: space-between; /* Space out image and title */
-      padding-bottom: 1.5rem; /* Padding for the bottom of the card */
+      align-items: center;
+      justify-content: center; /* Center image within card */
+      height: 250px; /* Fixed height for the card */
     }
 
     .category-card:hover {
       transform: translateY(-8px) scale(1.03); /* More dynamic hover */
       box-shadow: var(--category-shadow-lg);
       border-color: var(--category-primary); /* Accent border on hover */
-    }
-
-    .category-card-image-wrapper {
-        width: 100%;
-        height: 200px; /* Fixed height for image area */
-        overflow: hidden;
-        border-radius: var(--category-border-radius-lg) var(--category-border-radius-lg) 0 0;
-        margin-bottom: 1rem;
     }
 
     .category-card-image {
@@ -87,17 +76,36 @@
       transform: scale(1.15); /* Zoom in effect */
     }
 
-    .category-card-title {
-      font-size: 1.5rem; /* Prominent title size */
-      font-weight: 700;
-      color: var(--category-text-dark);
-      line-height: 1.3;
-      transition: color 0.3s ease;
-      padding: 0 1rem; /* Horizontal padding for title */
+    .category-card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: var(--category-border-radius-lg);
     }
 
-    .category-card:hover .category-card-title {
-      color: var(--category-primary); /* Vibrant accent on hover */
+    .category-card:hover .category-card-overlay {
+        opacity: 1;
+    }
+
+    .category-card-title-overlay {
+        color: var(--category-surface); /* White text */
+        font-size: 1.8rem; /* Larger font size */
+        font-weight: 700;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        transform: translateY(10px);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .category-card:hover .category-card-title-overlay {
+        transform: translateY(0);
     }
 
     /* Responsive adjustments */
@@ -106,11 +114,11 @@
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 1.5rem;
       }
-      .category-card-image-wrapper {
-        height: 180px;
+      .category-card {
+        height: 220px;
       }
-      .category-card-title {
-        font-size: 1.3rem;
+      .category-card-title-overlay {
+        font-size: 1.6rem;
       }
     }
 
@@ -121,11 +129,11 @@
       .categories-grid {
         gap: 1.5rem;
       }
-      .category-card-image-wrapper {
-        height: 160px;
+      .category-card {
+        height: 200px;
       }
-      .category-card-title {
-        font-size: 1.2rem;
+      .category-card-title-overlay {
+        font-size: 1.5rem;
       }
     }
 
@@ -137,10 +145,10 @@
         grid-template-columns: 1fr; /* Single column on very small screens */
         gap: 1rem;
       }
-      .category-card-image-wrapper {
-        height: 200px; /* Can be a bit taller in single column */
+      .category-card {
+        height: 180px;
       }
-      .category-card-title {
+      .category-card-title-overlay {
         font-size: 1.4rem;
       }
     }
@@ -151,31 +159,31 @@
     <div class="categories-grid">
 
       <a href="shop.html#handbags" class="category-card">
-        <div class="category-card-image-wrapper">
-            <img src="/public/handbags.jpeg" alt="Handbags" class="category-card-image">
+        <img src="/public/handbags.jpeg" alt="Handbags" class="category-card-image">
+        <div class="category-card-overlay">
+            <h3 class="category-card-title-overlay">Handbags</h3>
         </div>
-        <h3 class="category-card-title">Handbags</h3>
       </a>
 
       <a href="shop.html#backpacks" class="category-card">
-        <div class="category-card-image-wrapper">
-            <img src="/public/backpacks.jpeg" alt="Backpacks" class="category-card-image">
+        <img src="/public/backpacks.jpeg" alt="Backpacks" class="category-card-image">
+        <div class="category-card-overlay">
+            <h3 class="category-card-title-overlay">Backpacks</h3>
         </div>
-        <h3 class="category-card-title">Backpacks</h3>
       </a>
 
       <a href="shop.html#travel" class="category-card">
-        <div class="category-card-image-wrapper">
-            <img src="/public/travel.jpeg" alt="Travel" class="category-card-image">
+        <img src="/public/travel.jpeg" alt="Travel" class="category-card-image">
+        <div class="category-card-overlay">
+            <h3 class="category-card-title-overlay">Travel</h3>
         </div>
-        <h3 class="category-card-title">Travel</h3>
       </a>
 
       <a href="shop.html#wallets" class="category-card">
-        <div class="category-card-image-wrapper">
-            <img src="/public/wallets.jpeg" alt="Wallets" class="category-card-image">
+        <img src="/public/wallets.jpeg" alt="Wallets" class="category-card-image">
+        <div class="category-card-overlay">
+            <h3 class="category-card-title-overlay">Wallets</h3>
         </div>
-        <h3 class="category-card-title">Wallets</h3>
       </a>
 
     </div>
