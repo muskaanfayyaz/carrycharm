@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: "p1", name: "The Commuter", category: "Backpack", price: 4500, image: "public/backpacks.jpeg", description: "The perfect backpack for your daily commute, with a padded laptop sleeve and multiple organization pockets." },
       { id: "p2", name: "Everyday Tote", category: "Tote", price: 2800, image: "public/tote1.webp", description: "A stylish and spacious tote bag that will carry everything you need for your day, from work to workout." },
       { id: "p3", name: "Chic Crossbody", category: "Handbag", price: 3300, image: "public/handbags.jpeg", description: "An elegant crossbody bag that combines style and practicality, perfect for a night out or a day in the city." },
-      { id: "p4", name: "Adventure Duffel", category: "Duffel", price: 5200, image: "public/travel.webp", description: "Your ideal companion for weekend getaways or gym sessions, made from durable, water-resistant materials." },
+      { id: "p4", name: "Adventure Duffel", category: "Duffel", price: 5200, image: "public/duffels1.jpeg", description: "Your ideal companion for weekend getaways or gym sessions, made from durable, water-resistant materials." },
       { id: "p5", name: "Minimalist Wallet", category: "Wallet", price: 2000, image: "public/wallets.jpeg", description: "A slim and sleek wallet with enough space for your essential cards and cash, without the bulk." },
       { id: "p6", name: "City Explorer", category: "Backpack", price: 4700, image: "public/backpacks1.jpeg", description: "Navigate the urban jungle with this versatile and durable backpack, designed for comfort and style." },
-      { id: "p7", name: "Market Haul", category: "Tote", price: 2300, image: "public/tote3.webp", description: "The ideal reusable tote for your market runs, beach trips, or as an everyday carry-all." },
-      { id: "p8", name: "Evening Elegance", category: "Clutch", price: 2900, image: "public/hero.png", description: "A sophisticated clutch that adds a touch of glamour to any evening outfit." },
-      { id: "p9", name: "The Globetrotter", category: "Duffel", price: 5500, image: "public/image.png", description: "Spacious, durable, and ready for any adventure. This duffel is built to handle life on the road." },
+      { id: "p7", name: "Market Haul", category: "Tote", price: 2300, image: "public/tote3.jpeg", description: "Your go-to tote for your market runs, beach trips, or as an everyday carry-all." },
+      { id: "p8", name: "Evening Elegance", category: "Clutch", price: 2900, image: "public/clutch.jpeg", description: "A sophisticated clutch that adds a touch of glamour to any evening outfit." },
+      { id: "p9", name: "The Globetrotter", category: "Duffel", price: 5500, image: "public/duffels2.jpeg", description: "Spacious, durable, and ready for any adventure. This duffel is built to handle life on the road." },
       { id: "p10", name: "The Organizer", category: "Wallet", price: 2200, image: "public/wallets.jpeg", description: "Keep your finances in perfect order with this wallet, featuring multiple compartments and a secure zip closure." },
-      { id: "p11", name: "Urban Carryall", category: "Backpack", price: 3800, image: "public/backpacks2.jpeg", description: "A functional and fashionable backpack that's ready for anything your day throws at you." },
+      { id: "p11", name: "Urban Carryall", category: "Backpack", price: 3800, image: "public/backpacks2.jpg", description: "A functional and fashionable backpack that's ready for anything your day throws at you." },
       { id: "p12", name: "Canvas Shopper", category: "Tote", price: 2100, image: "public/tote2.webp", description: "A simple yet sturdy canvas shopper tote, perfect for your daily errands." }
   ];
 
