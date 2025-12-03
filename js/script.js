@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. GLOBAL DATA & STATE
   // =================================================================
 
-  // Centralized product database
   const products = [
       { id: "p1", name: "The Commuter", category: "Backpack", price: 4500, image: "public/backpacks.jpeg", description: "The perfect backpack for your daily commute, with a padded laptop sleeve and multiple organization pockets." },
       { id: "p2", name: "Everyday Tote", category: "Tote", price: 2800, image: "public/tote1.webp", description: "A stylish and spacious tote bag that will carry everything you need for your day, from work to workout." },
@@ -20,11 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: "p12", name: "Canvas Shopper", category: "Tote", price: 2100, image: "public/tote2.webp", description: "A simple yet sturdy canvas shopper tote, perfect for your daily errands." }
   ];
 
-  // Load cart from localStorage
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   // =================================================================
-  // 2. CORE FUNCTIONS (Cart, Modal, etc.)
+  // 2. CORE FUNCTIONS
   // =================================================================
 
   function updateCart() {
@@ -205,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (cart[productIndex].quantity > 1) {
                     cart[productIndex].quantity--;
                 } else {
-                    cart.splice(productIndex, 1); // Remove if quantity becomes 0
+                    cart.splice(productIndex, 1);
                 }
             }
             if(target.matches('.cart-item-remove-btn')) {
