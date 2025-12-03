@@ -1,0 +1,92 @@
+PROJECT_EXPLANATION.txt
+
+This document explains the core workings and architecture of the CarryCharm E-Commerce Website.
+
+---
+
+## 1. Overall Architecture
+
+The project is built as a modern, static front-end website. While the core pages (`index.html`, `shop.html`, `product.html`, `cart.html`, `about.html`, `contact.html`) are HTML files, much of their content is assembled and made interactive using JavaScript.
+
+-   **HTML:** Serves as the structural backbone for all pages.
+-   **CSS:** Primarily managed through a `dist/styles.css` file, which is generated from `css/styles.css` using PostCSS. Pages can also contain internal `<style>` blocks for page-specific or component-specific styling (e.g., modals, layout adjustments).
+-   **JavaScript:** `js/script.js` is the central brain, handling dynamic content loading, all interactive functionalities, and state management.
+
+---
+
+## 2. Dynamic Page Loading (HTML Partials)
+
+To promote reusability and maintainability, common sections of the website (like the header and footer) are stored as separate HTML partials in the `partials/` folder.
+
+-   **Mechanism:** Pages use `<div data-include="path/to/partial.html"></div>` elements.
+-   **JavaScript Integration:** The `js/script.js` file, specifically within its `DOMContentLoaded` event listener, identifies all `[data-include]` elements. It then uses the Fetch API to asynchronously load the content of the specified HTML partials and injects them into the respective `div`s using `innerHTML`. This simulates a server-side include system entirely on the client-side.
+
+---
+
+## 3. Product Management and Data Centralization
+
+All product information is stored and managed within a single, centralized JavaScript array.
+
+-   **`products` array:** Located at the top of `js/script.js`, this array holds detailed objects for each product, including `id`, `name`, `category`, `price`, `image` path, and `description`.
+-   **Single Source of Truth:** By centralizing product data, consistency is ensured across the entire website (shop page, product detail pages, cart).
+
+---
+
+## 4. Shopping Cart System
+
+The website features a fully functional and persistent shopping cart system.
+
+-   **Persistence:** The `cart` array (which stores added items) is stored in the browser's `localStorage`. This ensures that items remain in the cart even if the user closes and reopens the browser.
+-   **`updateCart()` function:** This core function in `js/script.js` is responsible for:
+    -   Saving the current `cart` state to `localStorage`.
+    -   Calling `updateCartCount()` to refresh the cart icon in the header.
+    -   Calling `renderCartPage()` if the user is currently on the `cart.html` page to re-render the cart contents.
+-   **`addToCart` Logic:** An event listener on `document.body` detects clicks on `.add-to-cart-btn`. It identifies the product (`data-id` attribute on parent element), adds it to the `cart` array (incrementing quantity if already present), calls `updateCart()`, and triggers a modal pop-up confirmation.
+-   **`showAddToCartModal()`:** Displays a user-friendly modal confirming that an item has been added to the cart.
+
+---
+
+## 5. Shop Page Functionality (`shop.html`)
+
+The `shop.html` page provides an interactive browsing experience.
+
+-   **Dynamic Rendering:** The `renderShopProducts()` function in `js/script.js` dynamically generates the product cards within the `.product-grid-redesigned` container.
+-   **Filtering:**
+    -   **Category Filter:** The `<select id="category-filter">` element allows users to filter products by their category. An `change` event listener calls `renderShopProducts()` with the selected filter.
+    -   **Search Bar:** The `<input type="search" id="search-input">` allows users to search for products by name or description. An `input` event listener calls `renderShopProducts()` with the search term.
+-   **Product Navigation:** Each product card in the shop grid is a clickable link (`<a>` tag) that navigates to its corresponding single product page (`product.html?id=...`).
+
+---
+
+## 6. Product Detail Page Functionality (`product.html`)
+
+This page serves as a dynamic template for individual product views.
+
+-   **Dynamic Population:** The `renderProductPage()` function in `js/script.js` reads the product `id` from the URL query string (`?id=p1`). It then retrieves the corresponding product details from the `products` array and dynamically populates the HTML elements (image, name, price, description) on the page.
+-   **"Add to Cart" Button:** The button on this page has the same functionality as those on the shop page, integrating seamlessly with the cart system.
+
+---
+
+## 7. Cart Page Functionality (`cart.html`)
+
+The `cart.html` page provides a clear overview and management interface for the user's selected items.
+
+-   **Dynamic Rendering:** The `renderCartPage()` function in `js/script.js` iterates through the `cart` array and dynamically generates HTML rows for each item, showing its image, name, price, current quantity, and total price for that item.
+-   **Quantity Adjustment:** Interactive `+` and `-` buttons allow users to easily adjust the quantity of each item. Changes instantly update the `cart` in `localStorage` and re-render the cart page.
+-   **Item Removal:** A "remove" button (`&times;`) next to each item allows for its quick deletion from the cart.
+-   **Total Calculation:** The `calculateCartTotal()` function updates the subtotal and grand total dynamically.
+-   **Empty Cart State:** Displays a message and a "Continue Shopping" button when the cart is empty.
+
+---
+
+## 8. CSS Build Process
+
+The project utilizes PostCSS for CSS processing, ensuring optimized and cross-browser compatible stylesheets.
+
+-   **Source:** `css/styles.css` is the primary CSS file where styles are written.
+-   **Build Scripts:**
+    -   `npm run build:dev`: Processes `css/styles.css` into `dist/styles.css` using `autoprefixer` (adds vendor prefixes).
+    -   `npm run build:prod`: Processes `css/styles.css` into `dist/styles.css` using `autoprefixer` AND `postcss-purgecss` (removes unused CSS for a smaller, faster production stylesheet).
+-   **Output:** `dist/styles.css` is the final stylesheet linked by all HTML pages.
+
+This modular and dynamic architecture ensures a maintainable, extensible, and high-performance front-end e-commerce experience.
