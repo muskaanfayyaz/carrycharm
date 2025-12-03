@@ -176,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initModal();
     updateCart();
     initializeHeader();
+    initializePromo(); // <-- Re-add the call
     renderShopProducts();
     renderProductPage();
     renderCartPage();
@@ -235,6 +236,44 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileNavToggle) {
       mobileNavToggle.addEventListener('click', () => document.body.classList.toggle('nav-is-open'));
     }
+  }
+
+  function initializePromo() {
+    const countdown = document.querySelector('#countdown');
+    if (!countdown) return;
+
+    const daysEl = document.querySelector('#days');
+    const hoursEl = document.querySelector('#hours');
+    const minutesEl = document.querySelector('#minutes');
+    const secondsEl = document.querySelector('#seconds');
+
+    // Set a fixed end date for the promotion (e.g., 7 days from now)
+    const promotionEndDate = new Date();
+    promotionEndDate.setDate(promotionEndDate.getDate() + 7);
+
+    function updateCountdown() {
+      const now = new Date();
+      const distance = promotionEndDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        countdown.innerHTML = '<p>This promotion has expired.</p>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysEl.textContent = days.toString().padStart(2, '0');
+      hoursEl.textContent = hours.toString().padStart(2, '0');
+      minutesEl.textContent = minutes.toString().padStart(2, '0');
+      secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call
   }
   
   document.body.addEventListener('click', (e) => {
